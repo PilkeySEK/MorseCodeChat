@@ -1,0 +1,8 @@
+{
+  "category.morsecodechat.main": "MorseCodeChat",
+  "key.morsecodechat.toggleTranslation": "Toggle Translation",
+  "symbol.morsecodechat.translation": " -> ",
+  "chat.morsecodechat.toggleMessage": "Morse code translation is now ",
+  "chat.morsecodechat.enabled": "enabled",
+  "chat.morsecodechat.disabled": "disabled"
+}

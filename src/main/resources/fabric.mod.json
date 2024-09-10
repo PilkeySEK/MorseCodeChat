@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "morsecodechat",
+  "version": "${version}",
+  "name": "MorseCodeChat",
+  "description": "Type & Translate morse code in the chat",
+  "authors": ["PilkeySEK"],
+  "contact": {},
+  "license": "MIT",
+  "icon": "assets/morsecodechat/morsecodechat-icon.png",
+  "environment": "client",
+  "entrypoints": {
+    "client": [
+      "me.pilkeysek.morsecodechat.client.MorsecodechatClient"
+    ],
+    "main": [
+      "me.pilkeysek.morsecodechat.Morsecodechat"
+    ]
+  },
+  "mixins": [
+    "morsecodechat.mixins.json",
+    {
+      "config": "morsecodechat.client.mixins.json",
+      "environment": "client"
+    }
+  ],
+  "depends": {
+    "fabricloader": ">=${loader_version}",
+    "fabric": "*",
+    "minecraft": "${minecraft_version}"
+  },
+  "custom": {
+    "modmenu": {
+      "update_checker": true
+    }
+  }
+}
