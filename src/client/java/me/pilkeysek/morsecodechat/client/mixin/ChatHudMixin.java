@@ -18,7 +18,11 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ChatHud.class)
 public class ChatHudMixin {
     @Inject(method = "addMessage(Lnet/minecraft/text/Text;Lnet/minecraft/network/message/MessageSignatureData;Lnet/minecraft/client/gui/hud/MessageIndicator;)V", at = @At("HEAD"))
-    void injected2(Text message, MessageSignatureData signatureData, MessageIndicator indicator, CallbackInfo ci, @Local(argsOnly = true) LocalRef<Text> refMessage) {
+    void injected(Text message, MessageSignatureData signatureData, MessageIndicator indicator, CallbackInfo ci, @Local(argsOnly = true) LocalRef<Text> refMessage) {
+        if(MorsecodechatClient.skipNextMessage) {
+            MorsecodechatClient.skipNextMessage = false;
+            return;
+        }
         if(!MorsecodechatClient.translationEnabled) return;
         String translatedString = Util.morseToString(refMessage.get().getString());
         if(translatedString.isEmpty()) return; // If the message doesn't contain any morse code

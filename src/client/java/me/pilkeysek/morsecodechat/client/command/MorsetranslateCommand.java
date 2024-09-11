@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.text.ClickEvent;
+import net.minecraft.text.HoverEvent;
 import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -23,22 +24,32 @@ public class MorsetranslateCommand {
                         .then(
                                 ClientCommandManager.argument("message", StringArgumentType.greedyString())
                                         .executes(context -> {
-                                            ClientPlayNetworkHandler networkHandler = MinecraftClient.getInstance().getNetworkHandler();
-                                            assert networkHandler != null;
-
-                                            networkHandler.sendChatMessage(Util.stringToMorse(StringArgumentType.getString(context, "message")));
-
                                             String morseText = Util.stringToMorse(StringArgumentType.getString(context, "message"));
-
                                             context.getSource().sendFeedback(
-                                                    Text.literal(morseText)
-                                                            .formatted(Formatting.AQUA)
-                                                            .append(Text.literal(" [COPY]")
-                                                                    .formatted(Formatting.BLUE)
-                                                                    .setStyle(
-                                                                            Style.EMPTY.withClickEvent(new ClickEvent(
-                                                                                    ClickEvent.Action.COPY_TO_CLIPBOARD, morseText
-                                                                            )))));
+                                                    Text.literal("[copy] ").setStyle(Style.EMPTY.withClickEvent(
+                                                            new ClickEvent(
+                                                                    ClickEvent.Action.COPY_TO_CLIPBOARD,
+                                                                    morseText
+                                                            )
+                                                    ).withHoverEvent(
+                                                            new HoverEvent(
+                                                                    HoverEvent.Action.SHOW_TEXT,
+                                                                    Text.literal("Click to copy the morse!").formatted(Formatting.DARK_GREEN)
+                                                            )
+                                                    )).formatted(
+                                                            Formatting.BOLD,
+                                                            Formatting.DARK_GREEN
+                                                    )
+                                                    .append(
+                                                            Text.literal(morseText)
+                                                                    .formatted(
+                                                                            Formatting.RESET
+                                                                    )
+                                                                    .formatted(
+                                                                            Formatting.DARK_AQUA
+                                                                    )
+                                                    )
+                                            );
 
                                             return 1;
                                         })

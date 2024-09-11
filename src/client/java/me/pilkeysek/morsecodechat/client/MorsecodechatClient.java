@@ -20,6 +20,8 @@ public class MorsecodechatClient implements ClientModInitializer {
 
     public static Logger LOGGER;
     public static final String NAMESPACE = "MorseCodeChat";
+    // Change the version accordingly, also in the gradle.properties
+    public static final String VERSION = "0.1.1";
 
     SimpleConfig CONFIG = SimpleConfig.of("morsecodechat").provider( this::configProvider ).request();
     private String configProvider(String filename) { return "# MorseCodeChat config\nshort=.\nlong=-\ncharnotfound=<?>\nspace= / \nmorsecommandname=morse\ntranslatecommandname=translate"; }
@@ -33,10 +35,13 @@ public class MorsecodechatClient implements ClientModInitializer {
     private static KeyBinding toggleTranslationKeybinding;
 
     public static boolean translationEnabled = true;
+    public static boolean skipNextMessage = false;
 
     @Override
     public void onInitializeClient() {
         LOGGER = LogManager.getLogger(NAMESPACE);
+
+        LOGGER.info("MorseCodeChat v" + VERSION + " loaded!");
 
         toggleTranslationKeybinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
                         "key.morsecodechat.toggleTranslation",
