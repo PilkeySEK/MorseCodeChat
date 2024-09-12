@@ -3,7 +3,7 @@
 A simple utility mod that adds the ability to translate & send morse code messages
 
 ### Features
-- Live chat translation (see images below & gallery)
+- Live chat translation (see image below)
 - `/morse` command (translates text & automatically sends it)
 - `/translate` command (only translates, option to copy the morse code message)
 - Toggle chat translation on and off with a keybind (`Z` or `Y` by default, depending on your keyboard layout)
