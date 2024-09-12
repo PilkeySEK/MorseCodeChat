@@ -4,5 +4,7 @@
   "symbol.morsecodechat.translation": " -> ",
   "chat.morsecodechat.toggleMessage": "Morse code translation is now ",
   "chat.morsecodechat.enabled": "enabled",
-  "chat.morsecodechat.disabled": "disabled"
+  "chat.morsecodechat.disabled": "disabled",
+  "chat.morsecodechat.copy": "[copy] ",
+  "chat.morsecodechat.copyTheMorse": "Click to copy the morse!"
 }

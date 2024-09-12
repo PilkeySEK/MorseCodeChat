@@ -26,7 +26,7 @@ public class MorsetranslateCommand {
                                         .executes(context -> {
                                             String morseText = Util.stringToMorse(StringArgumentType.getString(context, "message"));
                                             context.getSource().sendFeedback(
-                                                    Text.literal("[copy] ").setStyle(Style.EMPTY.withClickEvent(
+                                                    Text.translatable("chat.morsecodechat.copy").setStyle(Style.EMPTY.withClickEvent(
                                                             new ClickEvent(
                                                                     ClickEvent.Action.COPY_TO_CLIPBOARD,
                                                                     morseText
@@ -34,7 +34,7 @@ public class MorsetranslateCommand {
                                                     ).withHoverEvent(
                                                             new HoverEvent(
                                                                     HoverEvent.Action.SHOW_TEXT,
-                                                                    Text.literal("Click to copy the morse!").formatted(Formatting.DARK_GREEN)
+                                                                    Text.translatable("chat.morsecodechat.copyTheMorse").formatted(Formatting.DARK_GREEN)
                                                             )
                                                     )).formatted(
                                                             Formatting.BOLD,
