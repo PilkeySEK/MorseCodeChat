@@ -6,5 +6,7 @@
   "chat.morsecodechat.enabled": "enabled",
   "chat.morsecodechat.disabled": "disabled",
   "chat.morsecodechat.copy": "[copy] ",
-  "chat.morsecodechat.copyTheMorse": "Click to copy the morse!"
+  "chat.morsecodechat.copyTheMorse": "Click to copy the morse!",
+  "chat.morsecodechat.morseTooLong": "The resulting morse code message is too long!",
+  "chat.morsecodechat.copyInstead": " [copy it instead]"
 }
